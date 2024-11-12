@@ -7,5 +7,5 @@ class Task(models.Model):
         ('C', 'Completed')
     ]
     title = models.CharField(max_length=100, blank=False)
-    description = models.TextField()
-    status = models.CharField(max_length=1, choices=STATUS_CHOICE)
+    description = models.TextField(blank=True)
+    status = models.CharField(max_length=1, choices=STATUS_CHOICE, blank=False)
