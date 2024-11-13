@@ -97,6 +97,11 @@ Endpoint for view, update, delete a specific task.
 | `DELETE` | `/tasks/3/`                           | Deleted task #3.                          |
 
 ## Explanation & Justification
+- Model `Task`:
+    - `title = models.CharField(max_length=100, blank=False)`: Limit the length of title to 100 and make this field a required because every tasks need title.
+    - `description = models.TextField(blank=True)`: Allow empty description because not every tasks need description
+    - `due_date = models.DateField(blank=False)`: This field is required to show when the task need to be finished.
+    - `status = models.CharField(max_length=1, choices=[('P', 'Pending'), ('C', 'Completed')], blank=False)`: This field store the two status of task, 'Pending' and 'Completed', in value of 'P' and 'C', respectively. This is to save space for database.
 - The use of `TaskViewSerializer`: Make the java response shows 'Pending' and 'Completed' for status instead of 'P' and 'C'. This make the response more readable.
 - The use of the field `status = serializers.CharField(max_length=10)` and function `validate_status(self, status)` in serializer `TaskSerializer`: Allow endpoint to accept value 'p', 'c', 'pending', 'completed' and it's variation for status field and convert it to 'P' and 'C'. Make the API more flexible and easy to use.
 - Endpoint `/tasks/?[status_filter]&[page]&[page_size]`: Allow user to filter tasks by their status or get all tasks and return paginated results.
