@@ -6,7 +6,7 @@ class TaskSerializer(serializers.ModelSerializer):
     status = serializers.CharField(max_length=10)
     class Meta:
         model = Task
-        fields = ['id', 'title', 'description', 'status']
+        fields = ['id', 'title', 'description', 'due_date', 'status']
     
     # Accept status value in form of ('p', 'c', 'pending', 'completed)
     def validate_status(self, value):
@@ -20,4 +20,4 @@ class TaskViewSerializer(serializers.ModelSerializer):
     status = serializers.CharField(source='get_status_display') # Show display name of status
     class Meta:
         model = Task
-        fields = ['id', 'title', 'description', 'status']
+        fields = ['id', 'title', 'description', 'due_date', 'status']
