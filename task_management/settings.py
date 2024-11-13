@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'task_management.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-# Get environment values for postgres from .env file
+# Get database credentials of postgres from .env file
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
