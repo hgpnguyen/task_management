@@ -14,8 +14,8 @@ Install Python
     sudo apt-get update
     sudo apt-get install python3.8
     ```
-* Install PostgresSQL or use cloud database <br />
-For installing PostgresSQL and create database
+Install PostgresSQL or use cloud database
+* For installing PostgresSQL and create database
     ```sh
     sudo apt install postgresql postgresql-contrib
     sudo -u postgres
@@ -33,7 +33,7 @@ For installing PostgresSQL and create database
     ```
 2. Install requirement packages
     ```sh
-    python install -r requirement.txt
+    python3 install -r requirement.txt
     ```
 3. Create .env that contains database credentials in te same folder as manage.py. Example of .env file:
     ```sh
@@ -45,13 +45,15 @@ For installing PostgresSQL and create database
     ```
 4. Migrate database
     ```sh
-    python manage.py makemigrations
-    python manage.py migrate
+    python3 manage.py makemigrations
+    python3 manage.py migrate
     ```
 5. Start server
     ```sh
-    python manage.py runserver
+    python3 manage.py runserver
     ```
+6. Send request to http://127.0.0.1:8000/tasks/
+
 ## Usage
 Endpoint that allows user to create task or view and filter list of tasks.
 ```sh
@@ -106,6 +108,6 @@ Endpoint for view, update, delete a specific task.
 - The use of the field `status = serializers.CharField(max_length=10)` and function `validate_status(self, status)` in serializer `TaskSerializer`: Allow endpoint to accept value 'p', 'c', 'pending', 'completed' and it's variation for status field and convert it to 'P' and 'C'. Make the API more flexible and easy to use.
 - Endpoint `/tasks/?[status_filter]&[page]&[page_size]`: Allow user to filter tasks by their status or get all tasks and return paginated results.
 ## Room for improvement
-1. Add partial update for API
-2. Make the pagination result consistent
+1. Add partial update for API (currently only accept full update)
+2. Make the pagination result consistent (currently, pagination yield inconsistent results with an unordered object_list)
 3. Add test cases for API
