@@ -39,7 +39,7 @@ CREATE DATABASE <DATABASE_NAME> WITH OWNER <USER_NAME>;
     ```
 3. **Install required packages:**
     ```sh
-    python3 install -r requirement.txt
+    pip install -r requirements.txt
     ```
 4. **Create a `.env` file in the same folder as `manage.py` with database credentials:**
     ```sh
